@@ -17,11 +17,11 @@ public class Location {
 
     @ManyToOne
     @JoinColumn(name = "service_id")
-    @JsonBackReference // Évite la boucle infinie avec Service
+    @JsonBackReference
     private Service service;
 
     @OneToMany(mappedBy = "localisation", cascade = CascadeType.ALL)
-    @JsonManagedReference // Permet la sérialisation des tickets
+    @JsonManagedReference
     private List<Ticket> tickets;
 
     @OneToOne
@@ -38,7 +38,7 @@ public class Location {
         this.currentProcessing = 1;
     }
 
-    // Getters et Setters
+
     public Long getId() {
         return id;
     }

@@ -25,7 +25,7 @@ public class AgentController {
     @GetMapping("/{localisationId}")
     public ResponseEntity<?> getCurrentTicket(@PathVariable Long localisationId) {
         try {
-            // Use AgentService to get the current ticket
+
             //  Ticket currentTicket = agentService.getCurrentTicket(localisationId); //This line was causing the error
             Optional<Agent> agent = agentService.getAgentByLocalisation(localisationId);
 
@@ -35,7 +35,7 @@ public class AgentController {
             int currentProcessingTicket = agentService.getCurrentProcessingTicket(localisationId);
 
             return ResponseEntity.ok().body(Map.of(
-                    "currentProcessingTicket", currentProcessingTicket, // Use the current processing ticket number
+                    "currentProcessingTicket", currentProcessingTicket,
                     "nomAgent", agent.get().getName(),
                     "nomLocalisation", agent.get().getLocalisation().getName()
             ));
@@ -54,7 +54,7 @@ public class AgentController {
     @PostMapping("/{localisationId}/previous")
     public ResponseEntity<Void> previousClient(@PathVariable Long localisationId) {
         try {
-            agentService.processPreviousTicket(localisationId); // Use AgentService
+            agentService.processPreviousTicket(localisationId);
             return ResponseEntity.ok().build();
         } catch (IllegalStateException e) {
             return ResponseEntity.badRequest().build();

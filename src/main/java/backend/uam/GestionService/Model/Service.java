@@ -10,10 +10,10 @@ public class Service {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;  // Nom du service
-    private int currentProcessingTicket;  // Le numéro actuel de la file en cours
+    private String name;
+    private int currentProcessingTicket;
 
-    @ManyToOne(fetch = FetchType.LAZY)  // Lien vers la localisation (ex: une ville, un bureau)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Location localisation;
 
     public Service() {}

@@ -30,11 +30,9 @@ public class AdminController {
 
     @GetMapping("/locations")
     public List<Location> getLocations() {
-        //You can use this line to get all locations.
+
         return locationRepository.findAll();
 
-        // If you want to filter by serviceId, you must provide the serviceId
-        //  For example, if you want location with serviceId = 1, try:
-        // return locationRepository.findByServiceId(1L);
+
     }
 }
